@@ -1,0 +1,14 @@
+{% if locale == "ka" %}გამარჯობა,
+
+BTU AI უნარების ციფრულ პასპორტში შესასვლელად გახსენით ბმული (მოქმედებს {{ ttl }} წუთი, ერთჯერადია):
+{{ link }}
+
+თუ ეს მოთხოვნა თქვენ არ გაგიგზავნიათ, უბრალოდ წაშალეთ წერილი.
+{% else %}Hello,
+
+Open this link to sign in to your BTU AI Skills Digital Passport (valid for {{ ttl }} minutes, single use):
+{{ link }}
+
+If you did not request this, you can ignore this email.
+{% endif %}
+— Business and Technology University · btu.edu.ge

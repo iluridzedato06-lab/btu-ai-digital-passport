@@ -1,0 +1,20 @@
+<!doctype html>
+<html><body style="margin:0;background:#f2f2f2;font-family:Arial,Helvetica,sans-serif;color:#111">
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:24px 0"><tr><td align="center">
+<table width="520" cellpadding="0" cellspacing="0" style="background:#fff;border-top:6px solid #fe017e">
+<tr><td style="padding:28px 32px">
+<div style="font-size:22px;font-weight:800;letter-spacing:.5px">AI SKILLS <span style="font-weight:300">DIGITAL PASSPORT</span></div>
+<div style="height:1px;background:#ddd;margin:16px 0"></div>
+{% if locale == "ka" %}
+<p style="font-size:15px;line-height:1.5">პასპორტში შესასვლელად დააჭირეთ ღილაკს. ბმული მოქმედებს {{ ttl }} წუთი და მხოლოდ ერთხელ.</p>
+<p style="margin:24px 0"><a href="{{ link }}" style="background:#111;color:#fff;text-decoration:none;padding:12px 20px;font-weight:700;display:inline-block">შესვლა</a></p>
+<p style="font-size:12px;color:#666">თუ ეს მოთხოვნა თქვენ არ გაგიგზავნიათ, უბრალოდ წაშალეთ წერილი.</p>
+{% else %}
+<p style="font-size:15px;line-height:1.5">Use the button below to sign in to your passport. The link works once and expires in {{ ttl }} minutes.</p>
+<p style="margin:24px 0"><a href="{{ link }}" style="background:#111;color:#fff;text-decoration:none;padding:12px 20px;font-weight:700;display:inline-block">Sign in</a></p>
+<p style="font-size:12px;color:#666">If you did not request this, you can ignore this email.</p>
+{% endif %}
+</td></tr>
+<tr><td style="background:#222;color:#bbb;padding:14px 32px;font-size:11px">Business and Technology University · 82 I. Chavchavadze Ave, Tbilisi · btu.edu.ge</td></tr>
+</table></td></tr></table>
+</body></html>

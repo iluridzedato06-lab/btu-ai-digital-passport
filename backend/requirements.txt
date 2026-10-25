@@ -1,0 +1,15 @@
+Django>=5.2,<5.3
+djangorestframework>=3.15,<4
+dj-database-url>=2.2
+psycopg[binary]>=3.2,<4
+gunicorn>=23
+whitenoise>=6.7
+web3>=7,<8
+weasyprint>=65
+pikepdf>=9
+segno>=1.6
+gspread>=6.1,<7
+google-auth>=2.30
+openpyxl>=3.1
+pytest>=8
+pytest-django>=4.9

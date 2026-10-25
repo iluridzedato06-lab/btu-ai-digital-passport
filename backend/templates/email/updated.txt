@@ -1,0 +1,5 @@
+თქვენს AI უნარების ციფრულ პასპორტს ({{ passport_id }}) დაემატა ახალი ვერსია: v{{ version }}.
+Your AI Skills Digital Passport ({{ passport_id }}) has a new version: v{{ version }}.
+
+{{ base }}/ka/login
+— Business and Technology University · btu.edu.ge

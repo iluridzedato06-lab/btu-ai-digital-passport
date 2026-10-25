@@ -1,0 +1,4 @@
+student_number,first_name_en,last_name_en,first_name_ka,last_name_ka,btu_email,programme,consent
+DEMO-0001,Nino,Beridze,ნინო,ბერიძე,demo.nino.beridze@btu.edu.ge,BBA in Business Administration,YES
+DEMO-0002,Giorgi,Kapanadze,გიორგი,კაპანაძე,demo.giorgi.kapanadze@btu.edu.ge,BSc in Computer Science,YES
+DEMO-0003,Mariam,Lomidze,მარიამ,ლომიძე,demo.mariam.lomidze@btu.edu.ge,BSc in Digital Management,YES

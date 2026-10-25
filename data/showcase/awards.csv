@@ -1,0 +1,14 @@
+award_id,student_number,skill_code,earned_through,date_earned,confirmed,confirmed_by,notes
+AW-DEMO-0001,DEMO-0001,PROMPT-ENG,Prompt Engineering Workshop,2026-03-07,TRUE,Passport Office,Showcase
+AW-DEMO-0002,DEMO-0001,AI-WORKFLOW,AI Automation Bootcamp (3-day intensive),2026-03-07,TRUE,Passport Office,Showcase
+AW-DEMO-0003,DEMO-0001,DATA-AI,Data Analytics for Business (semester course),2026-03-07,TRUE,Passport Office,Showcase
+AW-DEMO-0004,DEMO-0001,AI-ETHICS,Responsible AI Masterclass,2026-03-07,TRUE,Passport Office,Showcase
+AW-DEMO-0005,DEMO-0001,AI-AGENTS,Build Your First AI Agent Challenge,2026-03-07,TRUE,Passport Office,Showcase
+AW-DEMO-0006,DEMO-0002,ML-FOUND,Introduction to Machine Learning (semester course),2026-01-24,TRUE,Passport Office,Showcase
+AW-DEMO-0007,DEMO-0002,CV-BASICS,Computer Vision Hackathon,2026-04-18,TRUE,Passport Office,Showcase
+AW-DEMO-0008,DEMO-0002,PROMPT-ENG,Prompt Engineering Workshop,2026-05-12,TRUE,Passport Office,Showcase
+AW-DEMO-0009,DEMO-0003,AI-MARKETING,AI in Marketing Guest Lecture,2026-02-10,TRUE,Passport Office,Showcase
+AW-DEMO-0010,DEMO-0003,AI-ETHICS,Responsible AI Masterclass,2026-03-21,TRUE,Passport Office,Showcase
+AW-DEMO-0011,DEMO-0003,AI-WORKFLOW,AI Automation Bootcamp (3-day intensive),2026-06-05,TRUE,Passport Office,Showcase
+AW-DEMO-0012,DEMO-0003,DATA-AI,Data Analytics for Business (semester course),2026-07-01,TRUE,Passport Office,Showcase
+AW-DEMO-0013,DEMO-0002,AI-AGENTS,Build Your First AI Agent Challenge,2026-10-10,FALSE,,Awaiting confirmation (shows the PENDING state)

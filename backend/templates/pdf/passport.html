@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BTU AI Skills Digital Passport {{ s.passport_id }}</title>
+<style>
+@font-face { font-family: "Passport"; font-weight: 900; src: url("fonts/Montserrat-Black.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 800; src: url("fonts/Montserrat-ExtraBold.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 700; src: url("fonts/Montserrat-Bold.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 600; src: url("fonts/Montserrat-SemiBold.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 500; src: url("fonts/Montserrat-Medium.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 400; src: url("fonts/Montserrat-Regular.ttf"); }
+@font-face { font-family: "Passport"; font-weight: 300; src: url("fonts/Montserrat-Light.ttf"); }
+@font-face { font-family: "Montserrat"; font-weight: 800; src: url("fonts/Montserrat-ExtraBold.ttf"); }
+@font-face { font-family: "Montserrat"; font-weight: 400; src: url("fonts/Montserrat-Regular.ttf"); }
+
+@page { size: 297mm 210mm; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: "Passport", sans-serif; color: #111; }
+
+.sheet { width: 297mm; height: 210mm; background: #2B2B2D; position: relative; page-break-after: always; overflow: hidden; }
+.sheet:last-child { page-break-after: auto; }
+.chip { position: absolute; left: 7mm; top: 6mm; width: 7mm; height: 7mm; border: 0.5mm solid #FF6B00; border-radius: 1.2mm;
+        color: #FF6B00; font-weight: 800; font-size: 7.5pt; text-align: center; line-height: 6mm; }
+.frame-line { position: absolute; left: 18mm; right: 9mm; top: 9.5mm; border-top: 0.25mm solid #555; }
+.frame-line-r { position: absolute; right: 9mm; top: 9.5mm; bottom: 15mm; border-right: 0.25mm solid #555; }
+.footer { position: absolute; left: 7mm; bottom: 6mm; right: 9mm; color: #fff; font-weight: 800; font-size: 9pt; letter-spacing: 0.1mm; }
+.footer span.rule { display: inline-block; vertical-align: middle; width: 150mm; margin-left: 3mm; border-top: 0.25mm solid #555; }
+.card { position: absolute; left: 13mm; top: 14mm; right: 14mm; bottom: 16mm; background: #E3E3E6; border-radius: 6mm; padding: 2.6mm; }
+.page { position: relative; width: 100%; height: 100%; background: #fff; border-radius: 4mm; padding: 11mm 13mm 10mm 13mm; }
+
+/* shared bottom strip */
+.brand-box { background: #FF6B00; color: #111; padding: 1.5mm 2.5mm; display: inline-block; line-height: 1.05; }
+.brand-box .l1 { font-weight: 300; font-size: 12pt; }
+.brand-box .l2 { font-weight: 800; font-size: 12pt; }
+.logo { width: 21mm; height: 21mm; }
+.pid { font-weight: 400; font-size: 10pt; letter-spacing: 0.2mm; }
+.pid b { font-weight: 800; }
+.vline { font-size: 6.5pt; color: #555; font-weight: 500; }
+
+/* page 1: cover */
+.cover h1 { margin: 0; line-height: 0.92; }
+.cover .t1 { font-weight: 900; font-size: 54pt; letter-spacing: -0.5mm; display: block; }
+.cover .t2 { font-weight: 300; font-size: 49pt; letter-spacing: -0.3mm; display: block; }
+.cover .asterisks { position: absolute; right: 23mm; top: 10mm; width: 10mm; }
+.cover .asterisks img { width: 9mm; height: 9mm; display: block; margin-bottom: 3.5mm; }
+.cover .rule { position: absolute; left: 13mm; right: 23mm; top: 52mm; border-top: 0.3mm solid #bbb; }
+.cover .fields { position: absolute; left: 13mm; top: 60mm; width: 120mm; }
+.cover .field { font-size: 17pt; font-weight: 800; margin-bottom: 4mm; white-space: nowrap; }
+.cover .field .val { font-weight: 400; margin-left: 2mm; }
+.cover .doi { position: absolute; left: 152mm; top: 59mm; font-size: 14pt; font-weight: 800; white-space: nowrap; }
+.cover .doi .val { font-weight: 400; margin-left: 2mm; }
+.cover .stickers { position: absolute; left: 121mm; top: 72mm; width: 120mm; }
+.cover .bottom-left { position: absolute; left: 13mm; bottom: 10mm; }
+.cover .bottom-left .brand-box { padding: 2mm 3mm; }
+.cover .bottom-left .brand-box .l1, .cover .bottom-left .brand-box .l2 { font-size: 15pt; }
+.cover .logo-wrap { position: absolute; left: 84mm; bottom: 8mm; }
+.cover .verify { position: absolute; left: 13mm; top: 92mm; width: 100mm; }
+.cover .verify .qr { float: left; width: 24mm; height: 24mm; margin-right: 4mm; }
+.cover .verify .qr svg { width: 24mm; height: 24mm; }
+.cover .verify .label { font-size: 7pt; font-weight: 700; letter-spacing: 0.3mm; color: #555; }
+.cover .verify .code { font-size: 15pt; font-weight: 800; letter-spacing: 0.6mm; margin: 0.5mm 0 1.2mm 0; }
+.cover .verify .hint { font-size: 7pt; color: #444; line-height: 1.35; }
+.cover .pid-wrap { position: absolute; right: 13mm; bottom: 12mm; text-align: right; }
+
+/* page 2: about */
+.about { display: flex; height: 100%; }
+.about .col-a { width: 74mm; padding-right: 5mm; border-right: 0.3mm solid #ccc; position: relative; }
+.about .col-b { flex: 1; padding-left: 6mm; position: relative; }
+.about h2 { margin: 0 0 4mm 0; font-size: 21pt; line-height: 0.98; }
+.about h2 b { font-weight: 900; display: block; }
+.about h2 span { font-weight: 300; display: block; }
+.about p { font-size: 6.6pt; line-height: 1.38; margin: 0 0 2.4mm 0; text-align: justify; font-weight: 400; }
+.about .stars { margin-top: 3mm; white-space: nowrap; }
+.about .stars img { width: 4.2mm; height: 4.2mm; margin-right: 2.6mm; }
+.about .pid-a { position: absolute; left: 0; bottom: 0; }
+.about h3.title { margin: 0 0 3mm 0; color: #FF6B00; font-weight: 900; font-size: 19pt; letter-spacing: -0.2mm; border-bottom: 0.3mm solid #ccc; padding-bottom: 1.5mm; }
+.legend-row { display: flex; }
+.legend { flex: 1; padding-right: 4mm; margin-bottom: 4mm; }
+.legend + .legend { padding-left: 4mm; border-left: 0.3mm solid #ccc; }
+.legend .head { display: flex; justify-content: space-between; align-items: flex-start; }
+.legend .name { font-weight: 800; font-size: 10pt; line-height: 1.05; }
+.legend .sub { font-weight: 400; font-size: 8pt; }
+.legend img { width: 15mm; }
+.legend img.wide { width: 24mm; }
+.legend p { margin-top: 1.8mm; }
+.legend .rep b { font-weight: 800; }
+.grow-row { display: flex; }
+.grow-row .legend { flex: 1.9; }
+.grows { width: 36mm; padding-left: 4mm; border-left: 0.3mm solid #ccc; text-align: center; }
+.grows h4 { margin: 0 0 2mm 0; font-size: 9pt; font-weight: 800; line-height: 1.05; }
+.grows .step { font-size: 6.4pt; font-weight: 500; margin-bottom: 1.6mm; }
+.grows .step .dot { display: block; margin: 0 auto 0.6mm auto; width: 4mm; height: 4mm; }
+.important { background: #EDEDEF; border-radius: 1.5mm; padding: 2.5mm 3mm; margin-top: 1mm; }
+.important b { font-size: 7pt; font-weight: 800; display: block; margin-bottom: 1.2mm; }
+.important p { font-size: 6.2pt; margin: 0 0 1.2mm 0; }
+
+/* page 3: skillset grid */
+.section-title { font-weight: 900; font-size: 19pt; margin: 0; letter-spacing: -0.2mm; }
+.section-sub { font-weight: 600; font-size: 8.5pt; margin: 1mm 0 5mm 0; }
+.grid-row { display: flex; margin-bottom: 3mm; }
+.slot { width: 44.6mm; height: 52mm; border: 0.3mm solid #c9c9cc; border-radius: 2mm; margin-right: 2.7mm; position: relative; background: #fff; }
+.slot:last-child { margin-right: 0; }
+.slot .date { height: 5.5mm; border-bottom: 0.3mm solid #c9c9cc; font-size: 6pt; text-align: center; line-height: 5.5mm; color: #333; }
+.slot .stamp { height: 25mm; text-align: center; padding-top: 3mm; }
+.slot .stamp img { height: 19mm; max-width: 34mm; }
+.slot .stamp img.applied { height: 15mm; margin-top: 2mm; }
+.slot .sname { font-weight: 800; font-size: 7.6pt; text-align: center; padding: 0 2mm; line-height: 1.15; text-transform: uppercase; }
+.slot .stype { font-weight: 400; font-size: 7pt; text-align: center; margin-top: 0.8mm; text-transform: uppercase; }
+.grid-foot { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; display: flex; align-items: flex-end; }
+.grid-foot .brand-box { margin-right: 8mm; }
+.grid-foot .logo { width: 16mm; height: 16mm; }
+.grid-foot .right { margin-left: auto; text-align: right; }
+
+/* page 4: detailed table */
+table.detail { width: 100%; border-collapse: separate; border-spacing: 0; border: 0.3mm solid #c9c9cc; border-radius: 2mm; }
+table.detail th { font-weight: 800; font-size: 9pt; text-align: center; padding: 3mm 1mm; border-bottom: 0.3mm solid #c9c9cc; }
+table.detail td { border-bottom: 0.3mm solid #c9c9cc; border-left: 0.3mm solid #c9c9cc; height: 19mm; vertical-align: middle; text-align: center; padding: 1mm 2mm; }
+table.detail tr td:first-child { border-left: none; }
+table.detail tr:last-child td { border-bottom: none; }
+table.detail td.stamp img { height: 13mm; max-width: 30mm; }
+table.detail td.stamp img.applied { height: 10mm; }
+table.detail td.skill { font-weight: 800; font-size: 8pt; text-transform: uppercase; width: 34mm; }
+table.detail td.desc { font-size: 5.6pt; text-transform: uppercase; line-height: 1.35; width: 42mm; }
+table.detail td.through { font-size: 5.8pt; text-transform: uppercase; width: 54mm; }
+table.detail td.date { font-size: 8pt; font-weight: 600; width: 42mm; }
+.table-foot { position: absolute; left: 13mm; right: 13mm; bottom: 7mm; display: flex; align-items: flex-end; }
+.table-foot .right { margin-left: auto; display: flex; align-items: flex-end; }
+.table-foot .right .brand-box { margin-right: 6mm; }
+.table-foot .logo { width: 16mm; height: 16mm; }
+.pageno { font-size: 6.5pt; color: #777; font-weight: 500; }
+</style>
+</head>
+<body>
+
+{# ---------------------------- PAGE 1: COVER ---------------------------- #}
+<section class="sheet">
+  <div class="chip">AI</div><div class="frame-line"></div><div class="frame-line-r"></div>
+  <div class="card"><div class="page cover">
+    <h1><span class="t1">AI SKILLS</span><span class="t2">DIGITAL PASSPORT</span></h1>
+    <div class="asterisks"><img src="asterisk.svg"><img src="asterisk.svg"><img src="asterisk.svg"></div>
+    <div class="rule"></div>
+    <div class="fields">
+      <div class="field">NAME:<span class="val">{{ s.holder.first_name|upper }}</span></div>
+      <div class="field">SURNAME:<span class="val">{{ s.holder.last_name|upper }}</span></div>
+    </div>
+    <div class="doi">DATE OF ISSUE:<span class="val">{{ first_issued_display }}</span></div>
+    <div class="verify">
+      <div class="qr">{{ qr_svg|safe }}</div>
+      <div class="label">VERIFICATION CODE</div>
+      <div class="code">{{ s.verification.code }}</div>
+      <div class="hint">Version {{ s.version }} &middot; updated {{ version_issued_display }}<br>
+        Verify without an account at<br><b>{{ s.verification.verify_page }}</b></div>
+    </div>
+    <img class="stickers" src="cover-stickers.svg">
+    <div class="bottom-left"><div class="brand-box"><div class="l1">AI SKILLS</div><div class="l2">DIGITAL PASSPORT</div></div></div>
+    <div class="logo-wrap"><img class="logo" src="btu-logo-black.svg"></div>
+    <div class="pid-wrap"><div class="pid">PASSPORT ID: <b>{{ s.passport_id }}</b></div></div>
+  </div></div>
+  <div class="footer">BUSINESS AND TECHNOLOGY UNIVERSITY<span class="rule"></span></div>
+</section>
+
+{# ---------------------------- PAGE 2: ABOUT ---------------------------- #}
+<section class="sheet">
+  <div class="chip">AI</div><div class="frame-line"></div><div class="frame-line-r"></div>
+  <div class="card"><div class="page"><div class="about">
+    <div class="col-a">
+      <h2><b>ABOUT<br>THE AI SKILLS</b><span>DIGITAL PASSPORT</span></h2>
+      <p>The BTU AI Skills Digital Passport is your personalized and verifiable record of AI competencies developed throughout your university experience.</p>
+      <p>AI Skill Stamps may be earned through eligible academic courses, workshops, masterclasses, hackathons, intensive programs, guest speaker sessions, and other AI-related learning experiences recognized by BTU.</p>
+      <p>Participation in the Passport is voluntary. There is no required number or combination of stamps and no predefined pathway. Students select learning opportunities according to their interests, studies, professional objectives, and desired areas of AI competence.</p>
+      <p>As new competencies are developed and recognized, additional stamps are added to the Passport, progressively creating an individual AI competency profile.</p>
+      <div class="stars">{% for i in "123456789" %}<img src="asterisk.svg">{% endfor %}</div>
+      <div class="pid-a"><div class="pid">PASSPORT ID: <b>{{ s.passport_id }}</b></div></div>
+    </div>
+    <div class="col-b">
+      <h3 class="title">UNDERSTANDING AI SKILLS STAMPS</h3>
+      <div class="legend-row">
+        <div class="legend">
+          <div class="head"><div><div class="name">AI SKILL</div><div class="sub">FOCUSED LEARNING</div></div><img src="stamps/focused.svg"></div>
+          <p>Awarded through an eligible focused learning experience, such as a workshop, masterclass, seminar, guest speaker session, or similar short-format activity.</p>
+          <p class="rep"><b>Represents:</b> Development of a defined AI competency.</p>
+        </div>
+        <div class="legend">
+          <div class="head"><div><div class="name">AI APPLIED SKILL</div><div class="sub">APPLIED LEARNING</div></div><img class="wide" src="stamps/applied.svg"></div>
+          <p>Awarded through an eligible extended practical learning experience, typically lasting two to three days, such as an intensive workshop, bootcamp, hackathon, or challenge.</p>
+          <p class="rep"><b>Represents:</b> Hands-on application of a defined AI competency.</p>
+        </div>
+      </div>
+      <div class="grow-row">
+        <div class="legend">
+          <div class="head"><div><div class="name">AI ADVANCED SKILL</div><div class="sub">EXTENDED ACADEMIC LEARNING</div></div><img src="stamps/advanced.svg"></div>
+          <p>Awarded through the successful completion of an eligible semester-long academic course in which the respective AI competency constitutes a defined and assessed component of the course learning outcomes.</p>
+          <p class="rep"><b>Represents:</b> Extended and formally assessed development of an AI competency.</p>
+          <div class="important"><b>IMPORTANT</b>
+            <p>The three stamp types represent different learning formats and depths of engagement. They do not constitute a mandatory sequence.</p>
+            <p>A student does not need to earn an AI Skill before earning an AI Applied Skill or AI Advanced Skill.</p>
+          </div>
+        </div>
+        <div class="grows">
+          <h4>HOW THE<br>PASSPORT GROWS</h4>
+          <div class="step"><img class="dot" src="asterisk.svg">LEARN</div>
+          <div class="step"><img class="dot" src="asterisk.svg">DEMONSTRATE</div>
+          <div class="step"><img class="dot" src="asterisk.svg">EARN</div>
+          <div class="step"><img class="dot" src="asterisk.svg">VERIFY</div>
+          <div class="step"><img class="dot" src="asterisk.svg">BUILD YOUR<br>AI PROFILE</div>
+        </div>
+      </div>
+    </div>
+  </div></div></div>
+  <div class="footer">BUSINESS AND TECHNOLOGY UNIVERSITY<span class="rule"></span></div>
+</section>
+
+{# ---------------------------- PAGE 3: VERIFIED SKILLSET ---------------------------- #}
+{% for gp in grid_pages %}
+<section class="sheet">
+  <div class="chip">AI</div><div class="frame-line"></div><div class="frame-line-r"></div>
+  <div class="card"><div class="page">
+    <h2 class="section-title">VERIFIED AI SKILLSET</h2>
+    <div class="section-sub">Collection of BTU-verified AI skill Stamps{% if gp.count > 1 %} &middot; {{ gp.index }}/{{ gp.count }}{% endif %}</div>
+    {% for row in gp.rows %}
+    <div class="grid-row">
+      {% for a in row %}
+      <div class="slot">
+        {% if a %}
+        <div class="date">{{ a.date_display }}</div>
+        <div class="stamp"><img src="{{ a.stamp_src }}"{% if a.stamp_type == "APPLIED" %} class="applied"{% endif %}></div>
+        <div class="sname">{{ a.skill_name }}</div>
+        <div class="stype">{{ a.stamp_title }}</div>
+        {% else %}
+        <div class="date">&nbsp;</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <div class="grid-foot">
+      <div class="brand-box"><div class="l1">AI SKILLS</div><div class="l2">DIGITAL PASSPORT</div></div>
+      <img class="logo" src="btu-logo-black.svg">
+      <div class="right"><div class="pid">PASSPORT ID: <b>{{ s.passport_id }}</b></div>
+        <div class="vline">Verification code {{ s.verification.code }} &middot; version {{ s.version }}</div></div>
+    </div>
+  </div></div>
+  <div class="footer">BUSINESS AND TECHNOLOGY UNIVERSITY<span class="rule"></span></div>
+</section>
+{% endfor %}
+
+{# ---------------------------- PAGE 4: DETAILED INFORMATION ---------------------------- #}
+{% for tp in table_pages %}
+<section class="sheet">
+  <div class="chip">AI</div><div class="frame-line"></div><div class="frame-line-r"></div>
+  <div class="card"><div class="page">
+    <h2 class="section-title">AI SKILLS DETAILED INFORMATION</h2>
+    <div class="section-sub">Detailed record of verified AI skills and learning experiences{% if tp.count > 1 %} &middot; {{ tp.index }}/{{ tp.count }}{% endif %}</div>
+    <table class="detail">
+      <thead><tr><th>STAMP TYPE</th><th>SKILL</th><th>DESCRIPTION</th><th>EARNED THROUGH</th><th>DATE EARNED</th></tr></thead>
+      <tbody>
+      {% for a in tp.rows %}
+        <tr>
+          <td class="stamp"><img src="{{ a.stamp_src }}"{% if a.stamp_type == "APPLIED" %} class="applied"{% endif %}></td>
+          <td class="skill">{{ a.skill_name }}</td>
+          <td class="desc">{{ a.description }}</td>
+          <td class="through">{{ a.earned_through }}</td>
+          <td class="date">{{ a.date_display }}</td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="5" class="desc">No verified skills recorded yet.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="table-foot">
+      <div><div class="pid">PASSPORT ID: <b>{{ s.passport_id }}</b></div>
+        <div class="vline">Verification code {{ s.verification.code }} &middot; version {{ s.version }} &middot; {{ award_count }} verified skill{{ award_count|pluralize }}</div></div>
+      <div class="right"><div class="brand-box"><div class="l1">AI SKILLS</div><div class="l2">DIGITAL PASSPORT</div></div>
+        <img class="logo" src="btu-logo-black.svg"></div>
+    </div>
+  </div></div>
+  <div class="footer">BUSINESS AND TECHNOLOGY UNIVERSITY<span class="rule"></span></div>
+</section>
+{% endfor %}
+</body>
+</html>

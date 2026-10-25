@@ -1,0 +1,33 @@
+{
+  "name": "btu-ai-passport-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource/bebas-neue": "^5.2.0",
+    "@fontsource/montserrat": "^5.2.0",
+    "@fontsource/noto-sans-georgian": "^5.2.0",
+    "@fontsource/roboto": "^5.2.0",
+    "next": "~15.5.0",
+    "next-intl": "^4.3.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "~5.9.0",
+    "vitest": "^3.2.0"
+  }
+}

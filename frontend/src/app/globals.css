@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #111111;
+  --color-paper: #ffffff;
+  --color-mist: #e3e3e6;
+  --color-fog: #f2f2f3;
+  --color-line: #d4d4d8;
+  --color-muted: #5f5f66;
+  --color-slate: #2b2b2d;
+  --color-night: #1f1f20;
+  --color-magenta: #fe017e;
+  --color-btu-blue: #0000b5;
+  --color-orange: #ff6b00;
+  --color-stamp-red: #f0433a;
+  --color-stamp-purple: #5b1cf5;
+  --color-stamp-navy: #14286b;
+  --color-ok: #0f7a3d;
+  --color-ok-bg: #e7f5ec;
+  --color-warn: #9a4b00;
+  --color-warn-bg: #fff1e0;
+  --color-bad: #b4122a;
+  --color-bad-bg: #fde8eb;
+
+  --font-display: "Montserrat", "Noto Sans Georgian", system-ui, sans-serif;
+  --font-body: "Roboto", "Noto Sans Georgian", system-ui, sans-serif;
+  --font-numeric: "Bebas Neue", "Montserrat", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="ka"] body,
+html[lang="ka"] .font-display {
+  font-family: "Noto Sans Georgian", "Roboto", system-ui, sans-serif;
+}
+
+/* Georgian has no capital letters; keep uppercase styling for Latin only */
+html[lang="ka"] .caps-latin {
+  text-transform: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-magenta);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-ink);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  word-break: break-all;
+}
+
+/* Thin rule used as a recurring motif, borrowed from the passport pages */
+.rule-top {
+  border-top: 1px solid var(--color-line);
+}
+
+/* The rounded "card inside a frame" look of the passport pages */
+.frame {
+  background: var(--color-mist);
+  border-radius: 22px;
+  padding: 10px;
+}
+.frame > .sheet {
+  background: var(--color-paper);
+  border-radius: 14px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+  padding: 0.8rem 1.25rem;
+  border: 2px solid var(--color-ink);
+  transition: background-color 120ms ease, color 120ms ease, transform 120ms ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-dark {
+  background: var(--color-ink);
+  color: #fff;
+}
+.btn-dark:hover {
+  background: var(--color-slate);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+}
+.btn-ghost:hover {
+  background: var(--color-fog);
+}
+.btn-orange {
+  background: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-ink);
+}
+.btn-orange:hover {
+  background: #ff8124;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.field {
+  width: 100%;
+  border: 2px solid var(--color-ink);
+  background: #fff;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 0 3px rgba(254, 1, 126, 0.15);
+}
+
+.code-field {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.55rem;
+  border: 1.5px solid currentColor;
+  white-space: nowrap;
+}
+
+.table-basic {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.table-basic th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--color-ink);
+}
+.table-basic td {
+  padding: 0.7rem 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Georgian: CSS uppercase would switch to Mtavruli capitals; keep the normal script */
+html[lang="ka"] .uppercase {
+  text-transform: none;
+}

@@ -1,0 +1,113 @@
+name: btu-passport
+
+x-backend-env: &backend-env
+  env_file: .env
+  environment:
+    DATABASE_URL: postgres://passport:passport@postgres:5432/passport
+    EMAIL_HOST: mailpit
+    EMAIL_PORT: "1025"
+    CHAIN_RPC_URL: ${CHAIN_RPC_URL:-http://anvil:8545}
+    LOCAL_SHEET_PATH: /data/local_sheet/passport_sheet.xlsx
+    SHEET_TEMPLATE_PATH: /data/sheet_template/BTU_AI_Passport_Sheet_Template.xlsx
+    SHOWCASE_DIR: /data/showcase
+    DEPLOYMENTS_DIR: /data/deployments
+    MEDIA_ROOT: /app/media
+  volumes:
+    - ./data:/data
+    - ./chain/deployments:/data/deployments
+    - media:/app/media
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: passport
+      POSTGRES_USER: passport
+      POSTGRES_PASSWORD: passport
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U passport -d passport"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+    restart: unless-stopped
+
+  anvil:
+    image: ghcr.io/foundry-rs/foundry:stable
+    user: root
+    entrypoint: ["anvil"]
+    command: ["--host", "0.0.0.0", "--chain-id", "31337", "--block-time", "2",
+              "--state", "/state/anvil-state.json", "--state-interval", "5"]
+    ports:
+      - "8545:8545"
+    volumes:
+      - anvil-state:/state
+    restart: unless-stopped
+
+  web:
+    build: ./backend
+    <<: *backend-env
+    command: ["web"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/api/health || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 40
+    restart: unless-stopped
+
+  worker:
+    build: ./backend
+    <<: *backend-env
+    command: ["worker"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      web:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3000}
+    environment:
+      API_INTERNAL_URL: http://web:8000
+      NODE_ENV: production
+    depends_on:
+      web:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    profiles: ["prod"]
+    depends_on:
+      - frontend
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/certs:/etc/nginx/certs:ro
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  media:
+  anvil-state:
