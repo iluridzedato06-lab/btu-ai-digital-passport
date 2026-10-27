@@ -1,4 +1,22 @@
 student_number,first_name_en,last_name_en,first_name_ka,last_name_ka,btu_email,programme,consent
-DEMO-0001,Nino,Beridze,ნინო,ბერიძე,demo.nino.beridze@btu.edu.ge,BBA in Business Administration,YES
+DEMO-0001,Nino,Beridze,ნინო,ბერიძე,BBA in Business Administration,YES
 DEMO-0002,Giorgi,Kapanadze,გიორგი,კაპანაძე,demo.giorgi.kapanadze@btu.edu.ge,BSc in Computer Science,YES
 DEMO-0003,Mariam,Lomidze,მარიამ,ლომიძე,demo.mariam.lomidze@btu.edu.ge,BSc in Digital Management,YES
+BTU-T-0001,Giorgi,Kapanadze,გიორგი,კაპანაძე,giorgi.kapanadze@btu.edu.ge,Business Administration (Management),YES
+BTU-T-0002,Mariam,Beridze,მარიამ,ბერიძე,mariam.beridze@btu.edu.ge,Business Administration (Finance),YES
+BTU-T-0003,Nino,Maisuradze,ნინო,მაისურაძე,nino.maisuradze@btu.edu.ge,Information Technologies,YES
+BTU-T-0004,Saba,Japaridze,საბა,ჯაფარიძე,saba.japaridze@btu.edu.ge,Digital Marketing,YES
+BTU-T-0005,Ana,Kiknadze,ანა,კიკნაძე,ana.kiknadze@btu.edu.ge,Computer Science and Artificial Intelligence,YES
+BTU-T-0006,Davit,Metreveli,დავით,მეტრეველი,davit.metreveli@btu.edu.ge,Psychology in the Digital World,YES
+BTU-T-0007,Salome,Chkheidze,სალომე,ჩხეიძე,salome.chkheidze@btu.edu.ge,Business Administration and Modern Technologies,YES
+BTU-T-0008,Luka,Kipiani,ლუკა,ყიფიანი,luka.kipiani@btu.edu.ge,Information Systems Management - DevOps,YES
+BTU-T-0009,Tamar,Gogoladze,თამარ,გოგოლაძე,tamar.gogoladze@btu.edu.ge,Data-Driven Digital Marketing,YES
+BTU-T-0010,Irakli,Samkharadze,ირაკლი,სამხარაძე,irakli.samkharadze@btu.edu.ge,International Security and Technologies,YES
+BTU-T-0011,Elene,Lomidze,ელენე,ლომიძე,Business Administration (Management),YES
+BTU-T-0012,Nikoloz,Gelashvili,ნიკოლოზ,გელაშვილი,nikoloz.gelashvili@btu.edu.ge,Business Administration (Finance),YES
+BTU-T-0013,Ketevan,Abashidze,ქეთევან,აბაშიძე,ketevan.abashidze@btu.edu.ge,Information Technologies,YES
+BTU-T-0014,Aleksandre,Mchedlishvili,ალექსანდრე,მჭედლიშვილი,aleksandre.mchedlishvili@btu.edu.ge,Digital Marketing,YES
+BTU-T-0021,Luka,Japaridze,ლუკა,ჯაფარიძე,luka.japaridze@btu.edu.ge,Business Administration and Modern Technologies,YES
+BTU-T-0022,Salome,Abashidze,სალომე,აბაშიძე,salome.abashidze@btu.edu.ge,Information Systems Management - DevOps,YES
+BTU-T-0023,Dato,Kiknadze,დათო,კიკნაძე,dato.kiknadze@btu.edu.ge,Data-Driven Digital Marketing,YES
+BTU-T-0024,Elene,Tsiklauri,ელენე,ციკლაური,elene.tsiklauri@btu.edu.ge,International Security and Technologies,YES
